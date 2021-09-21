@@ -15,7 +15,7 @@ add_item_playlist_url="https://api.spotify.com/v1/playlists/{playlist_id}/tracks
 create_playlist_url="https://api.spotify.com/v1/users/{user_id}/playlists"
 # %% Get the token
 # 1) go to https://developer.spotify.com/console/post-playlists/
-# 2) press "try it"
+# 2) press "get token"
 # 3) remember to include playlist-modify-private 
 # 4) login
 # 5) agree 
@@ -25,14 +25,11 @@ if "token" not in locals(): # if you have not inserted the token
 header={"Authorization": "Bearer %s"%token}
 
 
-# %% Search the songs
+# %% Get the list of songs
 
 assert os.path.exists("list_of_songs.json"), "Please put here a list of songs"
 with open("list_of_songs.json",'r') as fp:
     ids=json.load(fp)["ids"]
-
-# %%
-ids=["7ouMYWpwJ422jRcDASZB7P","4VqPOruhp5EdPBeR92t6lQ","2takcwOaAZWiXQijPHIx7B"]
 
 # %% Get the audio features
 audio_features=[]
@@ -57,7 +54,7 @@ if CREATE_SPOTIFY_PLAYLIST:
     params={"name":name_playlist, "description": "made during cpac!"}
 
 
-# %% Actually create the playlist
+# %% Create the playlist
 if CREATE_SPOTIFY_PLAYLIST:
     req=requests.post(url=create_playlist_url.format(user_id=user_id), 
                       json=params, headers=header)
