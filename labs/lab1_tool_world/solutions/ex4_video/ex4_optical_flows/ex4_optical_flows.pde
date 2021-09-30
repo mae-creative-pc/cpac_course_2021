@@ -46,7 +46,8 @@ void opticalFlow(PImage img){
   int c_y=0;   
   PVector aveFlow;  // here we will store the optical flow
   //image(img,0,0);   // we plot the image
-  stroke(255,0,0);
+  //stroke(255,0,0);
+  strokeWeight(2);
   
   for (int w=0; w<img.width; w+=grid_size){ 
     for (int h=0; h<img.height; h+=grid_size){
@@ -56,6 +57,10 @@ void opticalFlow(PImage img){
        // update the center position
        c_x=w+half_grid; 
        c_y=h+half_grid;
+       int loc = int(c_x+c_y*img.width);
+      
+        // say we want the color of the central pixel
+       stroke(red(img.pixels[loc]),green(img.pixels[loc]),blue(img.pixels[loc]));
        // draw a line from each center of the cell toward the direction of the average flow
        line(c_x, c_y, c_x+min(aveFlow.x*half_grid, half_grid), c_y+min(aveFlow.y*half_grid, half_grid));
     }
