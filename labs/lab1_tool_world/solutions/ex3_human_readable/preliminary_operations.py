@@ -31,9 +31,6 @@ print("Name: %s"%first_result["name"])
 print("Preview url: %s"%first_result["preview_url"])
 print("Id on spotify: %s"%first_result["id"])
 
-# %% Download a 30-second preview!
-urllib.request.urlretrieve(first_result["preview_url"], 'first_result.mp3')
-
 # %% Audio feature APIs
 
 modes=["minor", "major"]
