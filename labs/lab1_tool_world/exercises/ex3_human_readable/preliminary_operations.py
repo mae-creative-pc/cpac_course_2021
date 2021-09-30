@@ -4,7 +4,7 @@ import json
 import requests
 import os
 import urllib.request
-os.chdir(os.path.abspath(os.path.dirname(__file__)))
+#os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
 # %% Let's start with the token
 # 1) go to https://developer.spotify.com/console/get-audio-analysis-track/?id=06AKEBrKUckW0KREUWRnvT
@@ -31,8 +31,6 @@ print("Name: %s"%first_result["name"])
 print("Preview url: %s"%first_result["preview_url"])
 print("Id on spotify: %s"%first_result["id"])
 
-# %% Download a 30-second preview!
-urllib.request.urlretrieve(first_result["preview_url"], 'first_result.mp3')
 
 # %% Audio feature APIs
 
