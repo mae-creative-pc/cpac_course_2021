@@ -6,7 +6,6 @@ import time
 import requests
 import urllib
 import numpy as np
-os.chdir(os.path.abspath(os.path.dirname(__file__)))
 import your_code
 CREATE_SPOTIFY_PLAYLIST = True 
 # Set it to False and I will create a long file instead
