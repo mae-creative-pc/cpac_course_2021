@@ -2,3 +2,6 @@ cpac_venv/**
 cpac-venv/**
 labs/labs_2020/**
 **/__pycache__/**
+data/*.mp3
+data/tire_bum.wav
+data/tire_disco.wav
