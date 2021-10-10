@@ -3,7 +3,6 @@ import org.jbox2d.collision.shapes.*;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 import org.jbox2d.dynamics.contacts.*;
-import processing.sound.*;
 
 boolean DRAW_PATH=false;
 boolean DRAW_ANCHORS=false;
@@ -48,8 +47,6 @@ void setup() {
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   box2d.setGravity(0, 0);
-  box2d.listenForCollisions();
-  
   boids=new ArrayList<Boid>();
   boundaries=new Boundaries(box2d, width, height);
   bd= new BodyDef();
@@ -58,58 +55,16 @@ void setup() {
   cs.m_radius = P2W(RADIUS_BOID/2);
   bd.linearDamping=0;
   path=new Path(12, 0.35, 0.36);
-  
-  String path=sketchPath()+"/sounds";
-  File dir = new File(path);
-  filenames= dir.list();
-  
-  
 }
 void mousePressed() {
  if(mouseButton==LEFT){//insert a new box
     int p=path.closestTarget(P2W(mouseX, mouseY));
-    int i= int(min(random(0, filenames.length), filenames.length-1));    
-    while(!filenames[i].endsWith(".wav")){i= int(min(random(0, filenames.length), filenames.length-1));}
-    
-    Boid b = new Boid(box2d, cs, bd, 
-                      P2W(mouseX, mouseY), 
-                      new SoundFile(this, "sounds/"+filenames[i]),
-                      p);
+    Boid b = new Boid(box2d, cs, bd, P2W(mouseX, mouseY), p);
     boids.add(b);     
   }
   if(mouseButton==RIGHT){ 
     ;
   }
-}
-
-
-
-void beginContact(Contact cp) {
-  Fixture f1 = cp.getFixtureA();
-  Fixture f2 = cp.getFixtureB();
-  Body body1 = f1.getBody();
-  Body body2 = f2.getBody();
-  Boid b1 = (Boid) body1.getUserData();
-  Boid b2 = (Boid) body2.getUserData();
-  if (b1!=null) {
-    b1.play();
-    b1.changeColor();
-  }
-  else{
-  //  b2.bounce();
-  }
-  if (b2!=null) {  
-    b2.play();
-    b2.changeColor();
-  }
-  else{
-  //   b1.bounce();
-  }
-}
-
-
-void endContact(Contact cp) {
-  ;
 }
 
 Vec2 computeForce(Boid b){  

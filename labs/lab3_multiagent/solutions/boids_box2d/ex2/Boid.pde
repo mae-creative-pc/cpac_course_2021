@@ -6,45 +6,30 @@ class Boid{
     Box2DProcessing  box2d;
     color defColor = color(200, 200, 200);
     color contactColor;
-    float time_index, dur_frames;
     int nextPoint;
-    SoundFile sample;
-    
-    Boid(Box2DProcessing  box2d, CircleShape ps, BodyDef bd, Vec2 position,SoundFile sample, int nextPoint){
+    Boid(Box2DProcessing  box2d, CircleShape ps, BodyDef bd, Vec2 position, int nextPoint){
         this.box2d = box2d;    
         bd.position.set(position);
         this.body = this.box2d.createBody(bd);
         this.body.m_mass=1;
         this.body.createFixture(ps, 1);
         this.body.getFixtureList().setRestitution(0.8);
-        this.body.setUserData(this);  
-        this.sample=sample;
-        
-        this.time_index=0;
-        this.dur_frames=3*frameRate;
+        this.body.setUserData(this);        
         this.nextPoint=nextPoint;
-        colorMode(HSB, 255);
-        this.contactColor= color(random(0,255),255,255);
-        colorMode(RGB, 255);
     }
     void applyForce(Vec2 force){
       this.body.applyForce(force, this.body.getWorldCenter());      
     }
     void draw(){
+        /* your code*/
         Vec2 posPixel=this.box2d.getBodyPixelCoord(this.body);
        
-        fill(lerpColor(this.defColor, this.contactColor, this.time_index/this.dur_frames));
+        fill(this.defColor);
         stroke(0);
         strokeWeight(0);        
-        ellipse(posPixel.x, posPixel.y, RADIUS_BOID, RADIUS_BOID);
-        this.time_index=max(this.time_index-1,0);
+        ellipse(posPixel.x, posPixel.y, RADIUS_BOID, RADIUS_BOID);     
     }
-    void changeColor(){
-      this.time_index=this.dur_frames;
-    }
-    void play(){
-     if(! this.sample.isPlaying())      this.sample.play();    
-    }
+    
     void update(ArrayList<Boid> boids){
       Vec2 myPosW=this.body.getPosition();
       Vec2 myVel=this.body.getLinearVelocity();
