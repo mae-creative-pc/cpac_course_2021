@@ -4,3 +4,4 @@ soundfile
 ipykernel
 matplotlib
 requests
+python-osc

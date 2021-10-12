@@ -6,7 +6,7 @@ To _clone_ the repository, i.e., have a synced copy in your local computer, use 
 If you feel bold, you can use the git command line
 
 ```
-git clone https://github.com/mae-creative-pc/cpac_course_2020.git
+git clone https://github.com/mae-creative-pc/cpac_course_2021.git
 ```
 The repository is set as public (everybody can clone it), but only professor and assistants can modify it. If you want to create a new repository starting from this, you can _fork_ the repository on your own Github, by clicking the fork button in the top right corner of the github page.
 

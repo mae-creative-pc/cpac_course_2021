@@ -21,7 +21,7 @@ create_playlist_url="https://api.spotify.com/v1/users/{user_id}/playlists"
 # 5) agree 
 # 6) execute this cell and give the script the token (see above)
 if "token" not in locals(): # if you have not inserted the token 
-    token=input("Give me the token\n")
+    token=input("Please, give me your token\n")
 header={"Authorization": "Bearer %s"%token}
 
 

@@ -65,6 +65,7 @@ void opticalFlow(PImage img){
 void draw() {
   if (! cam.available()) {return;}
   cam.read();
+  background(0);
   if(opencv ==null){// not initialized
     opencv = new OpenCV(this, cam.width, cam.height);
   }
