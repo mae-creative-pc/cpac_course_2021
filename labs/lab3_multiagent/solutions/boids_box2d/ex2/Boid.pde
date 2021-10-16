@@ -25,8 +25,7 @@ class Boid{
         Vec2 posPixel=this.box2d.getBodyPixelCoord(this.body);
        
         fill(this.defColor);
-        stroke(0);
-        strokeWeight(0);        
+        noStroke();
         ellipse(posPixel.x, posPixel.y, RADIUS_BOID, RADIUS_BOID);     
     }
     
@@ -43,15 +42,30 @@ class Boid{
       for(Boid other: boids){        
         if(this.body==other.body){continue;}
         otherPosW=other.body.getPosition();
-        direction=otherPosW.sub(myPosW);
+        otherVel=other.body.getLinearVelocity();
+        direction= otherPosW.sub(myPosW);
+       
         if(direction.length()<AVOID_DIST){
-           direction.normalize();
-           avoid_force.add(direction.mul(-1));
+          direction.normalize(); 
+          direction.mulLocal(-1); // go away
+          avoid_force.addLocal(direction); // 
+          println("Avoiding other boid!");
+          /*AVOID_FORCE: 
+          goes away from boids that are closer
+          than AVOID_DIST;*/
         }
         else if(direction.length()<ALIGN_DIST){
-           otherVel=other.body.getLinearVelocity();
-           
-           align_force.add(otherVel.sub(myVel));
+          otherVel.normalize();
+          otherVel.mulLocal(2);
+          align_force.addLocal(otherVel);
+          println("Aligning to other boids");
+          /*
+          ALIGN_FORCE: 
+          align your velocity to boids' 
+          velocities that are closer 
+          than ALIGN_DIST
+          but further than AVOID_DIST */
+
         }
       }
       if(avoid_force.length()>0){this.applyForce(avoid_force);}

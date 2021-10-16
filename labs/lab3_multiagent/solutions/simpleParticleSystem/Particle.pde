@@ -2,12 +2,14 @@
 class Particle{
   PVector pos, vel, acc;
   float radius, lifespan;
+  float hue;
   Particle(PVector pos, float radius, float lifespan){
     this.pos= pos.copy();
     this.vel = new PVector();
     this.acc = new PVector();
     this.radius=radius;
     this.lifespan=lifespan;
+    this.hue=random(0,255);
   }
   void update(){    
     this.vel.add(this.acc);

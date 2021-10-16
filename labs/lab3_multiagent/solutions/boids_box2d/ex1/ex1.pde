@@ -13,8 +13,6 @@ Boundaries boundaries;
 CircleShape cs;
 ArrayList<Boid> boids;
 
-int EXERCISE=1;
-
 Vec2 P2W(Vec2 in_value){
   return box2d.coordPixelsToWorld(in_value);
 }
@@ -55,17 +53,16 @@ void setup() {
   
 }
 void mousePressed() {
- if(mouseButton==LEFT){//insert a new boid
-    Boid b = new Boid(box2d, cs, bd, P2W(mouseX, mouseY));
-    boids.add(b);
-    Vec2 force=new Vec2(random(-1,1),random(-1,1));
-    b.applyForce(force.mul(SCALEFORCE));    
+ if(mouseButton==LEFT){
+     Boid b= new Boid(box2d, cs, bd, P2W(new Vec2(mouseX, mouseY)));
+     boids.add(b);
+     Vec2 force = new Vec2(random(-1,1), random(-1,1));     
+     b.applyForce(force.mul(SCALEFORCE));
   }
   if(mouseButton==RIGHT){
-    Vec2 force;
-    for(Boid b: boids){
-      force=new Vec2(random(-1,1),random(-1,1));
-      b.applyForce(force.mul(SCALEFORCE));
+    for (Boid b : boids) {
+        Vec2 force = new Vec2(random(-1,1), random(-1,1));     
+        b.applyForce(force.mul(SCALEFORCE));
     }
   }
 }

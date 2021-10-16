@@ -9,6 +9,8 @@ float mass_attractor;
 float radius_attractor=100;
 PVector pos_attractor;
 
+float Amin=0.02;
+float alpha_amp=0.01;
 
 void setup(){
   String path=sketchPath()+"/sounds";
@@ -49,15 +51,16 @@ PVector computeGravityForce(AgentMover mover){
 int changeAmp(int i){
   PVector attr_force=pos_attractor.copy();
   attr_force.sub(movers[i].position);
-  float dist=attr_force.mag();
-  float amp=max(0.02,1/(1+0.01*dist));
+
+  float dist_i=attr_force.mag();
   
+  float amp=max(1/(1+alpha_amp * dist_i), Amin);
   samples[i].amp(amp);
   
   return int(amp*255);
+  
 }
 void draw(){
-  //pos_repeller.set(mouseX, mouseY);
   rectMode(CORNER);
   fill(0,20);
   rect(0,0,width, height);
@@ -66,6 +69,7 @@ void draw(){
           radius_attractor, radius_attractor);
   
   PVector force_a;
+  
   for(int i=0; i<N_AGENTS; i++){
     force_a = computeGravityForce(movers[i]);
     movers[i].applyForce(force_a);
