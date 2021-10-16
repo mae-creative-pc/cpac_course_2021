@@ -13,7 +13,6 @@ Boundaries boundaries;
 CircleShape cs;
 ArrayList<Boid> boids;
 
-
 Vec2 P2W(Vec2 in_value){
   return box2d.coordPixelsToWorld(in_value);
 }
@@ -65,7 +64,6 @@ void mousePressed() {
         Vec2 force = new Vec2(random(-1,1), random(-1,1));     
         b.applyForce(force.mul(SCALEFORCE));
     }
-    
   }
 }
  

@@ -51,6 +51,7 @@ PVector computeGravityForce(AgentMover mover){
 int changeAmp(int i){
   PVector attr_force=pos_attractor.copy();
   attr_force.sub(movers[i].position);
+
   float dist_i=attr_force.mag();
   
   float amp=max(1/(1+alpha_amp * dist_i), Amin);

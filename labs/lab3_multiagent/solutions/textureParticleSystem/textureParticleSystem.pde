@@ -11,7 +11,7 @@ void setup(){
   for(int p=0; p<Nparticles; p++){
     ps.addParticle();
   }
-  img=loadImage("smallTexture.png");
+  img=loadImage("texture.png");
   audio=new AudioIn(this);
   
   background(0);

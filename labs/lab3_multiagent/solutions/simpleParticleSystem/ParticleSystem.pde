@@ -22,7 +22,6 @@ class ParticleSystem{
       random_force.y=random(-small_force, small_force);
       p.applyForce(random_force);
       p.update();
-
       p.draw();
       p.lifespan-=0.5;
       if(p.isDead()){

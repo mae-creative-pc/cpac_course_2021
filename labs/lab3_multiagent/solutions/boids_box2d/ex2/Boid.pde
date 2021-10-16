@@ -25,9 +25,7 @@ class Boid{
         Vec2 posPixel=this.box2d.getBodyPixelCoord(this.body);
        
         fill(this.defColor);
-        //stroke(0);
         noStroke();
-        //strokeWeight(0);        
         ellipse(posPixel.x, posPixel.y, RADIUS_BOID, RADIUS_BOID);     
     }
     
@@ -67,6 +65,7 @@ class Boid{
           velocities that are closer 
           than ALIGN_DIST
           but further than AVOID_DIST */
+
         }
       }
       if(avoid_force.length()>0){this.applyForce(avoid_force);}

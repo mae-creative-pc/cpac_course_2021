@@ -1,5 +1,5 @@
-PVector mu=new PVector(0,-2);
-float std=.1;
+PVector mu=new PVector(0,-5);
+float std=.3;
 
 class ParticleSystem{
   ArrayList<Particle> particles;
