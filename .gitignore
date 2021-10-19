@@ -7,3 +7,8 @@ data/tire_bum.wav
 data/tire_disco.wav
 labs/lab3_multiagent/exercises/boids_box2d/ex3/sounds/*.wav
 labs/lab3_multiagent/exercises/moving_balls_attr_sounds/sounds/*.wav
+labs/lab3_multiagent/solutions/boids_box2d/ex3/sounds/*.wav
+labs/lab3_multiagent/solutions/moving_balls_attr_sounds/sounds/*.wav
+labs/lab3_multiagent/old_solutions/**
+labs/lab4_levy_grammar/old_solutions/grammar_based_composition/out/*.wav
+labs/lab4_levy_grammar/old_solutions/grammar_based_composition/sounds/*.wav
