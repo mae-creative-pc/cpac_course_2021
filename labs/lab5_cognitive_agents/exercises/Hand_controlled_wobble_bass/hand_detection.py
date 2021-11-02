@@ -163,13 +163,13 @@ if __name__ == "__main__":
 			#if START_SOUND:
 				#if class_test == 0:
 
-					#freq = (c_x/width_roi) * 100  # it's not really frequency but midi note
-					#amp = (c_y/height_roi)  # amplitude
-					#client.send_message("/synth_control", ['a', freq, amp])
+					#freq = # FILL THE CODE
+					#amp = # FILL THE CODE
+					#client.send_message(# FILL THE CODE)
 				#else:
-					#detune = (c_x / width_roi) * 0.1
-					#lfo = (c_y / height_roi) * 10
-					#client.send_message("/synth_control", ['b', detune, lfo])
+					#detune = # FILL THE CODE
+					#lfo = # FILL THE CODE
+					#client.send_message(# FILL THE CODE)
 		
 
 		# display the frame with segmented hand
