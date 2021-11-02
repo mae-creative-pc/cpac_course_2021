@@ -12,3 +12,4 @@ joblib
 pandas
 collections
 time
+scikit-learn
