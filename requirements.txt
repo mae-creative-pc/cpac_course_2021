@@ -5,3 +5,10 @@ ipykernel
 matplotlib
 requests
 python-osc
+opencv-python
+imutils
+argparse
+joblib
+pandas
+collections
+time
