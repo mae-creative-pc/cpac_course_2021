@@ -169,7 +169,7 @@ if __name__ == "__main__":
 				#else:
 					#detune = (c_x / width_roi) * 0.1
 					#lfo = (c_y / height_roi) * 10
-					client.send_message("/synth_control", ['b', detune, lfo])
+					#client.send_message("/synth_control", ['b', detune, lfo])
 		
 
 		# display the frame with segmented hand
