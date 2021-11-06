@@ -12,3 +12,5 @@ labs/lab3_multiagent/solutions/moving_balls_attr_sounds/sounds/*.wav
 labs/lab3_multiagent/old_solutions/**
 labs/lab4_levy_grammar/old_solutions/grammar_based_composition/out/*.wav
 labs/lab4_levy_grammar/old_solutions/grammar_based_composition/sounds/*.wav
+labs/lab4_levy_grammar/solutions/grammar_based_composition/out/*.wav
+labs/lab4_levy_grammar/solutions/grammar_based_composition/sounds/*.wav
