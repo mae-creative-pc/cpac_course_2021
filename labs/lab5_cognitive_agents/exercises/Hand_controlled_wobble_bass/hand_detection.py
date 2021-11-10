@@ -92,7 +92,7 @@ if __name__ == "__main__":
 		else:
 			
 			# segment the hand region
-			#hand = segment(gray)
+			hand = segment(gray)
 			
 
 			# check whether hand region is segmented
@@ -106,9 +106,9 @@ if __name__ == "__main__":
 				
 				
 				# Center of the hand
-				#c_x, c_y = detect_palm_center(segmented)
-				#radius = 5
-				#cv2.circle(# image where we draw the circle, # tuple representing center, radius, 0, 1)
+				c_x, c_y = detect_palm_center(segmented)
+				radius = 5
+				cv2.circle(thresholded, (c_x, c_y), radius, 0, 1)
 				
 				cv2.imshow("Thesholded", thresholded)
 
@@ -131,7 +131,7 @@ if __name__ == "__main__":
 				cv2.rectangle(clone, (left, top), (right, bottom), (255, 0, 0), 2)
 				text = 'Generating ' + str(class_name) + ' images'
 				cv2.putText(clone, text, (60, 300), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-
+				
 				# Save training images corresponding to the class
 				cv2.imwrite('images/class_'+class_name+'/img_'+str(num_frames_train)+'.png', thresholded)
 
@@ -160,16 +160,15 @@ if __name__ == "__main__":
 			cv2.putText(clone, text, (70, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
 			# Here we send the OSC message corresponding
-			#if START_SOUND:
-				#if class_test == 0:
-
-					#freq = # FILL THE CODE
-					#amp = # FILL THE CODE
-					#client.send_message(# FILL THE CODE)
-				#else:
-					#detune = # FILL THE CODE
-					#lfo = # FILL THE CODE
-					#client.send_message(# FILL THE CODE)
+			if START_SOUND:
+				if class_test == 0:
+					freq = (c_x/width_roi) * 100
+					amp = (c_y/height_roi) 
+					client.send_message('/synth_control', ['a', freq, amp])
+				else:
+					detune = (c_x/width_roi) * 0.1
+					lfo = (c_y/height_roi) * 10
+					client.send_message('/synth_control', ['b', detune, lfo])
 		
 
 		# display the frame with segmented hand

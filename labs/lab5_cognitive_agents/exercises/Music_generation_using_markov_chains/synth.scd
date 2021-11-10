@@ -8,7 +8,7 @@ s.boot
 
 // Following two lines to change supercollider
 ServerOptions.outDevices;
-s.options.outDevice_('Scarlett 2i2 USB');
+s.options.outDevice_('CS-CODECPRO-3');
 
 
 
